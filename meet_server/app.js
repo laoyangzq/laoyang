@@ -1,17 +1,16 @@
-//功能：学子商城服务器程序
-//1:下载四个第三方模块
 //express           web服务器
 //mysql             mysql驱动
 //express-session   会话对象
 //cors              跨域
 //[8080脚手架   4000服务器]
-//npm i express mysql express-session cors
-//2:引入第三方模块
+// 引入第三方模块
 const express = require("express");
 const session = require("express-session");
 const mysql = require("mysql");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+// 图形验证码登录
+const captcha = require('svg-captcha');
 //3:创建数据库连接池
 var pool = mysql.createPool({
    host:"127.0.0.1",
@@ -47,7 +46,27 @@ server.use(bodyParser.urlencoded({
 //9:启动监听端口  4000
 server.listen(4000);
 
-//功能零：用户注册
+
+// 图形验证
+server.get('/register',(req,res,next)=>{
+  let options={
+    size:4,
+    ignoreChars: '0oO1lI',
+    noise:1,
+    color:true,
+    background:'#fff',
+    width: 150,
+    height: 50,
+    fontSize: 50,
+  }
+  let c= captcha.create(options)
+  req.session.captcha = c.text.toLowerCase()
+  req.session.save()
+  res.type('svg')
+  res.send(c.data)
+})
+
+//用户注册
 server.post("/reg",(req,res)=>{
   //1:获取参数 uname upwd email phone gender
   var uname=req.body.uname;
@@ -92,8 +111,21 @@ server.post("/reg",(req,res)=>{
 })
 
 
-//功能一;完成用户登录验证
+//完成用户登录验证
 server.post("/login",(req,res)=>{
+  let output ={};
+  var captcha = req.body.captcha
+	if(!captcha){  //客户端未提交验证码
+		output.code = 409
+		output.msg = 'captcha required'
+		res.send(output)
+		return
+	}
+	if(captcha.toLowerCase() !== req.session.captcha){	//客户端提交的验证码有误
+		output.code = 410
+		res.send(output);
+		return
+	}
   //1:获取参数 uname upwd
   var n = req.body.uname;
   var p = req.body.upwd;
@@ -110,8 +142,6 @@ server.post("/login",(req,res)=>{
        //6:登录成功
        //7:将登陆成功用户id保存
        //session对象作为登陆成功凭据
-       //result=[{id:1}];
-       //一定不能写req.session.id
        req.session.uid=result[0].uid;
        //console.log(result[0].uid);
        res.send({code:1,msg:"登录成功"});
@@ -119,13 +149,7 @@ server.post("/login",(req,res)=>{
   })
 })
 
-//测试
-//1:启动服务器 node app.js
-//2:启动mysql 3306
-//3:http://127.0.0.1:4000/login?uname=tom&upwd=122
-//3:http://127.0.0.1:4000/login?uname=tom&upwd=123
-
-//功能二:商品列表分页显示
+//商品列表分页显示
 server.get("/list",(req,res)=>{
   //1:参数  页码  一页几行
   var pno = req.query.pno;
@@ -133,29 +157,17 @@ server.get("/list",(req,res)=>{
   //2:默认指定页码一页几行
   if(!pno){pno=1}
   if(!ps){ps=20}
-  //x:sql
   var offset = (pno-1)*ps;
   ps = parseInt(ps);
   var sql = " SELECT id,sum,icd,title,stitle,price,spec,pic FROM meet_list LIMIT ?,?";
   pool.query(sql,[offset,ps],(err,result)=>{
     if(err)throw err;
     //console.log(result);
-    // req.session.lid=result[0].lid;
     res.send({code:1,msg:"查询成功",data:result})
   })
 })
 
-
-
-//测试
-//复制db_01.sql 复制
-//启动服务器  node app.js
-//打开浏览器  
-//http://127.0.0.1:4000/product
-//http://127.0.0.1:4000/product?pno=2
-//http://127.0.0.1:4000/product?pno=3
-
-// 功能三：跳转详情页
+//跳转详情页
 server.get("/jumpdetail",(req,res)=>{
   var id = req.query.id;
   var sql="SELECT icd,title,stitle,price,spec,pic FROM meet_list WHERE id=?";
@@ -166,7 +178,7 @@ server.get("/jumpdetail",(req,res)=>{
   })
 })
 
-// 功能四：添加购物车
+//添加购物车
 server.get('/addcart',(req,res)=>{
   // 获取用户当前登录的uid
   var uid=req.session.uid;
@@ -198,7 +210,7 @@ server.get('/addcart',(req,res)=>{
   })
 })
 
-// 功能五：查询当前用户购物车信息
+//查询当前用户购物车信息
 server.get('/cart',(req,res)=>{
   var uid=req.session.uid;
   if(!uid){
@@ -212,19 +224,7 @@ server.get('/cart',(req,res)=>{
   })
 })
 
-// 跳转详情
-// server.get("/godetail",(req,res)=>{
-//   var icd = req.query.icd;
-//   console.log(icd)
-//   var sql="SELECT title,stitle,price,spec,pic FROM meet_shopcar WHERE icd=?";
-//   pool.query(sql,[icd],(err,result)=>{
-//     if(err) throw err;
-//     // console.log(result[0])
-//     res.send({code:1,msg:"跳转成功",data:result[0]})
-//   })
-// })
-
-// 功能六：删除指定商品
+//删除指定商品
 server.get('/delcart',(req,res)=>{
   var uid=req.session.uid;
   if(!uid){
@@ -244,7 +244,7 @@ server.get('/delcart',(req,res)=>{
   })
 })
 
-// 功能七：删除多个商品记录
+//删除多个商品记录
 server.get('/dels',(req,res)=>{
   // 1.获取uid判断是否赋值登录成功
   var uid=req.session.uid;
@@ -252,7 +252,7 @@ server.get('/dels',(req,res)=>{
     res.send({code:-2,msg:'请登录'});
     return;
   }
-  // 2.获取参数ids 删除id列表 脚手架传过来也是这样的格式
+  // 2.获取参数ids 删除id列表 
   var ids=req.query.ids;
   var sql = `DELETE FROM meet_shopcar WHERE icd IN (${ids})`;
   // 3.删除
@@ -266,7 +266,7 @@ server.get('/dels',(req,res)=>{
   })
 })
 
-// 功能八：查询轮播图
+//查询轮播图
 server.get('/banner',(req,res)=>{
   var sql="SELECT pic FROM meet_banner";
   pool.query(sql,(err,result)=>{
@@ -275,11 +275,25 @@ server.get('/banner',(req,res)=>{
   })
 })
 
-// 功能九：查询分类  
+//查询分类  
 server.get('/class',(req,res)=>{
   var sql="SELECT cname FROM meet_class";
   pool.query(sql,(err,result)=>{
     if(err) throw err;
     res.send({code:1,msg:"查询成功",data:result});
+  })
+})
+
+//获取用户昵称 
+server.get("/username",(req,res)=>{
+  var uid=req.session.uid;
+  if(!uid){
+    res.send({code:-1,msg:'请登录'});
+    return; 
+  }
+  var sql="SELECT uname FROM meet_user WHERE uid=?";
+  pool.query(sql,[uid],(err,result)=>{
+    if(err) throw err;
+    res.send({code:1,msg:'查询成功',result:result});
   })
 })

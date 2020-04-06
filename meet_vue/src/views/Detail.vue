@@ -3,12 +3,12 @@
     <Header></Header>
     <div class="detail">
       <div class="detail_left">
-        <img :src="'http://yuanzu.applinzi.com/'+this.pic">
+        <img :src=img>
         <div class="detail-left">
-          <img src="../../public/photo/100000223_M.jpg" alt="">
-          <img src="../../public/photo/100000234_M.jpg" alt="">
-          <img src="../../public/photo/100000235_M.jpg" alt="">
-          <img src="../../public/photo/190210.jpg" alt="">
+          <img src="../../public/photo/100000223_M.jpg">
+          <img src="../../public/photo/100000234_M.jpg">
+          <img src="../../public/photo/100000235_M.jpg">
+          <img src="../../public/photo/190210.jpg">
         </div>
       </div>
       <div class="detail-right">
@@ -32,14 +32,14 @@
     </div>
     <div class="detail-bottom">
       <div>
-        <a href="">商品介绍</a>
-        <a href="">商品评价</a>
+        <a href="javascript:;">商品介绍</a>
+        <a href="javascript:;">商品评价</a>
       </div>
-      <img src="../../public/photo/100001174_M.jpg" alt="">
-      <img src="../../public/photo/100001205_M.jpg" alt="">
-      <img src="../../public/photo/100001428_M.jpg" alt="">
-      <img src="../../public/photo/100000344_M.jpg" alt="">
-      <img src="../../public/photo/100000805_M.jpg" alt="">
+      <img src="../../public/photo/100001174_M.jpg">
+      <img src="../../public/photo/100001205_M.jpg">
+      <img src="../../public/photo/100001428_M.jpg">
+      <img src="../../public/photo/100000344_M.jpg">
+      <img src="../../public/photo/100000805_M.jpg">
     </div>
     <Footer></Footer>
     <Sidebar></Sidebar>
@@ -67,7 +67,8 @@ export default {
             spec:null,
             count:1,
             pic:'',
-            clist:[]
+            clist:[],
+            img:''
         }
     },
   methods:{
@@ -85,31 +86,12 @@ export default {
           this.stitle = this.list.stitle;
           this.spec = this.list.spec;
           this.icd = this.list.icd;
-          console.log(this.icd)
+          // console.log(this.icd)
           this.pic = this.list.pic;
-          console.log(this.pic)
+          this.img=('http://127.0.0.1:4000/'+this.pic)
+          // console.log(this.pic)
       })
     },
-    // load(){
-    //   var icd =this.$route.query.icd;
-    //   // console.log(icd)
-    //   var price='';
-    //   var url = "godetail";
-    //   var obj = {icd};
-    //   // console.log(obj)
-    //   this.axios.get(url,{params:obj})
-    //   .then(res=>{
-    //       this.list = res.data.data;
-    //       this.price = this.list.price.toFixed(2);
-    //       this.title = this.list.title;
-    //       this.stitle = this.list.stitle;
-    //       this.spec = this.list.spec;
-    //       this.icd = this.list.icd;
-    //       console.log(this.icd)
-    //       this.pic = this.list.pic;
-    //       console.log(this.pic)
-    //   })
-    // },
     shopping(){
       alert('此功能暂未开放，敬请期待')
     },
@@ -128,7 +110,6 @@ export default {
       var obj={icd,title,stitle,spec,price,pic,count}
       this.axios.get(url,{params:obj})
       .then(result=>{
-        // console.log(result.data);
         if(result.data.code==-2){
           alert("请登录");
           this.$router.push('/');

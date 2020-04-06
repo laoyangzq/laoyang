@@ -2,8 +2,7 @@
   <div class="Sidebar">
     <div>
       <div @click="backtop">
-        <p>TOP<a @click="showbtn">返回顶部</a></p>
-        
+        <p>TOP<a @click="showbtn">返回顶部</a></p>    
       </div>
       <router-link to="./">首页</router-link>
       <router-link to="./Cart">购物车</router-link>

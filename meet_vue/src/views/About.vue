@@ -2,7 +2,7 @@
   <div class="about">
     <Header></Header>
     <div>
-      <a href="">主页</a>&nbsp;&gt;<a href="">关于元祖</a>
+      <a href="javascript:;">主页</a>&nbsp;&gt;<a href="javascript:;">关于元蛋糕</a>
     </div>
     <div>
       <img src="../../public/photo/About/Atop.gif" alt="">

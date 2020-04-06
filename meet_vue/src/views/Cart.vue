@@ -25,10 +25,10 @@
       <div class="cart-d-but" v-for="(item,i) of list" :key="i">
          <div>
            <input type="checkbox" style="zoom:180%;" class="put" v-model="item.cb" @change="isSelect">
-           <a><img :src="`http://yuanzu.applinzi.com/${item.pic}`"></a>
+           <a><img :src="`http://127.0.0.1:4000/${item.pic}`"></a>
            <!-- :to="'/Detail?icd='+item.icd" -->
            <div>
-             <a href="">{{item.title}}</a>
+             <a href="javascript:;">{{item.title}}</a>
              <p>{{item.stitle}}</p>
              <p>{{item.icd}}</p>
            </div>
@@ -116,12 +116,11 @@ export default {
     del(e){
       // 删除指定的商品 先获icd
       var icd = e.target.dataset.icd;
-      console.log(icd)
       // console.log(icd)
       if(confirm("确定要删除吗？")){
         var url="delcart";
         var obj={icd};
-        console.log(obj);
+        // console.log(obj);
         this.axios.get(url,{params:obj})
         .then(result=>{
           // console.log(result);
@@ -176,14 +175,11 @@ export default {
       var rows=this.list;
       // console.log(rows)
       for(var i=0;i<rows.length;i++){
-        // console.log(rows[i]);
-        // console.log(this.list[i].price);
         // console.log(this.list[i].count);
         if(this.list[i]){
           total+=this.list[i].price*this.list[i].count;
         }
       }
-      // console.log(total.toFixed(2));
       return total.toFixed(2);
     },
     getCount(){ //计算总数
@@ -191,8 +187,6 @@ export default {
       var rows=this.list;
       // console.log(rows)
       for(var i=0;i<rows.length;i++){
-        // console.log(rows[i]);
-        // console.log(this.list[i].count);
         if(this.list[i]){
           count+=this.list[i].count;
         }

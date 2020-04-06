@@ -15,22 +15,24 @@
         <ul>
           <li>元祖新品
             <ul class="list-left-ul">
-                <li><router-link to="/Detail">
+                <li><a href="javascript:;">
+                  <!-- <router-link to="/Detail"> -->
                   <img src="../../public/photo/272300.jpg" alt="">
                   <p>8号心有所属鲜奶蛋糕</p>
                   <p>￥<em>258.00</em></p>
-                </router-link></li>
-                <li><a href="">
+                  <!-- </router-link> -->
+                </a></li>
+                <li><a href="javascript:;">
                   <img src="../../public/photo/3a36550268538fdff7a12018f09455c.jpg" alt="">
                   <p>8号春梅吉祥慕斯蛋糕</p>
                   <p>￥<em>298.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100000732_M.jpg" alt="">
                   <p>8号招财纳福鲜奶蛋糕</p>
                   <p>￥<em>258.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100001392_M.jpg" alt="">
                   <p>青蛙来了鲜奶蛋糕</p>
                   <p>￥<em>258.00</em></p>
@@ -39,22 +41,22 @@
           </li>
           <li>热销商品
             <ul  class="list-left-ul">
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100001428_M.jpg" alt="">
                   <p>春节年味礼盒</p>
                   <p>￥<em>258.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100000805_M.jpg" alt="">
                   <p>元祖招财进宝礼盒</p>
                   <p>￥<em>268.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100000962_M.jpg" alt="">
                   <p>新村铭礼礼盒</p>
                   <p>￥<em>308.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100001173_M.jpg" alt="">
                   <p>元祖祥瑞礼盒</p>
                   <p>￥<em>180.00</em></p>
@@ -63,22 +65,22 @@
           </li>
           <li>节庆民俗
             <ul class="list-left-ul">
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100000234_M.jpg" alt="">
                   <p>元祖旺来凤梨酥</p>
                   <p>￥<em>128.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100000235_M.jpg" alt="">
                   <p>坚果礼盒</p>
                   <p>￥<em>120.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100000258_M.jpg" alt="">
                   <p>幸福结果子礼盒</p>
                   <p>￥<em>60.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/100000309_M.jpg" alt="">
                   <p>绿豆糕礼盒</p>
                   <p>￥<em>100.00</em></p>
@@ -87,22 +89,22 @@
           </li>
           <li>元祖卡劵
               <ul class="list-left-ul">
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/600000355_M.jpg" alt="">
                   <p>100型心意卡</p>
                   <p>￥<em>100.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/600000357_M.jpg" alt="">
                   <p>200型心意卡</p>
                   <p>￥<em>200.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/600000358_M.jpg" alt="">
                   <p>元祖300型心意卡</p>
                   <p>￥<em>300.00</em></p>
                 </a></li>
-                <li><a href="">
+                <li><a href="javascript:;">
                   <img src="../../public/photo/600000404_M.jpg" alt="">
                   <p>元祖500型心意卡</p>
                   <p>￥<em>500.00</em></p>
@@ -112,7 +114,7 @@
         </ul>
       </div>
       <div class="list-right">
-        <img src="../../public/photo/272300.jpg" alt="">
+        <img src="../../public/photo/100000805_M.jpg" alt="">
       </div>
     </div>
     <!-- *****4F***** -->
@@ -126,19 +128,21 @@
       <div class="f4-bottom">
         <img src="../../public/photo/100000309_M.jpg" alt="">
         <ul class="f4-bottom-right">
-          <li><router-link :to="{path:'./Detail'}">
+          <li><a href="javascript:;">
+            <!-- <router-link :to="{path:'./Detail'}"> -->
             <img src="../../public/photo/100000732_M.jpg" alt="">
             <p>朝雨鲜奶蛋糕</p>
             <p>寓意良辰美景，幸福时刻</p>
             <p>￥198.00</p>
-          </router-link></li>
-          <li><a href="">
+            <!-- </router-link> -->
+          </a></li>
+          <li><a href="javascript:;">
             <img src="../../public/photo/100000324_M.jpg" alt="">
             <p>朝纤云农桥鲜奶蛋糕</p>
             <p>带给你浓郁的蓝莓风味</p>
             <p>￥198.00</p>
           </a></li>
-          <li><a href="">
+          <li><a href="javascript:;">
             <img src="../../public/photo/100000234_M.jpg" alt="">
             <p>以花为名鲜奶蛋糕</p>
             <p> 让“世界上第一个挺你的妈妈”，成为幸福的妈妈</p>
@@ -155,25 +159,25 @@
         </ul>
       </div>
       <div class="f4-bottom">
-        <img src="../../public/photo/100000309_M.jpg" alt="">
+        <img src="../../public/photo/190210.jpg" alt="">
         <ul class="f4-bottom-right">
-          <li><a href="">
-            <img src="../../public/photo/100000732_M.jpg" alt="">
-            <p>朝雨鲜奶蛋糕</p>
-            <p>寓意良辰美景，幸福时刻</p>
-            <p>￥198.00</p>
+          <li><a href="javascript:;">
+            <img src="../../public/photo/m18.jpg" alt="">
+            <p>多多咖啡鲜奶蛋糕</p>
+            <p>多多咖啡，越想品质</p>
+            <p>￥188.00</p>
           </a></li>
-          <li><a href="">
-            <img src="../../public/photo/100000324_M.jpg" alt="">
-            <p>朝纤云农桥鲜奶蛋糕</p>
-            <p>带给你浓郁的蓝莓风味</p>
-            <p>￥198.00</p>
+          <li><a href="javascript:;">
+            <img src="../../public/photo/m19.jpg" alt="">
+            <p>Nice兔meetyou鲜奶蛋糕</p>
+            <p>她微笑迎接每天的日出，生活永远快乐着</p>
+            <p>￥188.00</p>
           </a></li>
-          <li><a href="">
-            <img src="../../public/photo/100000234_M.jpg" alt="">
-            <p>以花为名鲜奶蛋糕</p>
-            <p> 让“世界上第一个挺你的妈妈”，成为幸福的妈妈</p>
-            <p>￥258.00</p>
+          <li><a href="javascript:;">
+            <img src="../../public/photo/m20.jpg" alt="">
+            <p>福鸟咕咕宝鲜奶蛋糕</p>
+            <p>福鸟到，吉利到！</p>
+            <p>￥198.00</p>
           </a></li>
         </ul>
       </div>
@@ -186,24 +190,24 @@
         </ul>
       </div>
       <div class="f4-bottom">
-        <img src="../../public/photo/100000309_M.jpg" alt="">
+        <img src="../../public/photo/0d59a0ca7976a88b1e65dfb196c524d.jpg" alt="">
         <ul class="f4-bottom-right">
-          <li><a href="">
-            <img src="../../public/photo/100000732_M.jpg" alt="">
-            <p>朝雨鲜奶蛋糕</p>
-            <p>寓意良辰美景，幸福时刻</p>
+          <li><a href="javascript:;">
+            <img src="../../public/photo/s02.jpg" alt="">
+            <p>琴瑟奕奕慕斯蛋糕（柳橙慕斯）</p>
+            <p>柳橙香，热带丛林狂欢的篝火</p>
             <p>￥198.00</p>
           </a></li>
-          <li><a href="">
-            <img src="../../public/photo/100000324_M.jpg" alt="">
-            <p>朝纤云农桥鲜奶蛋糕</p>
-            <p>带给你浓郁的蓝莓风味</p>
+          <li><a href="javascript:;">
+            <img src="../../public/photo/s03.jpg" alt="">
+            <p>8号春梅吉祥慕斯蛋糕</p>
+            <p>新年到，梅花开，梅开眼笑</p>
             <p>￥198.00</p>
           </a></li>
-          <li><a href="">
-            <img src="../../public/photo/100000234_M.jpg" alt="">
-            <p>以花为名鲜奶蛋糕</p>
-            <p> 让“世界上第一个挺你的妈妈”，成为幸福的妈妈</p>
+          <li><a href="javascript:;">
+            <img src="../../public/photo/s04.jpg" alt="">
+            <p>玲珑藏心慕斯蛋糕</p>
+            <p>樱桃成双，高山为证</p>
             <p>￥258.00</p>
           </a></li>
         </ul>
@@ -212,9 +216,9 @@
     <div class="bottom">
       <h3>精选活动</h3>
       <div>
-        <a href=""><img src="../../public/photo/100000235_M.jpg" alt=""></a>
-        <a href=""><img src="../../public/photo/100001173_M.jpg" alt=""></a>
-        <a href=""><img src="../../public/photo/100001174_M.jpg" alt=""></a>
+        <a href="javascript:;"><img src="../../public/photo/-20190705162213.jpg" alt=""></a>
+        <a href="javascript:;"><img src="../../public/photo/100001173_M.jpg" alt=""></a>
+        <a href="javascript:;"><img src="../../public/photo/100001174_M.jpg" alt=""></a>
       </div>
     </div>
     <Footer></Footer>

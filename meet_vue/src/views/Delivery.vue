@@ -2,7 +2,7 @@
   <div class="delivery">
     <Header></Header>
     <div>
-      <a href="">主页</a>&nbsp;&gt;<a href="">售后服务</a>
+      <a href="javascript:;">主页</a>&nbsp;&gt;<a href="javascript:;">售后服务</a>
     </div>
     <div class="de_top">
       <div class="de_top_left">

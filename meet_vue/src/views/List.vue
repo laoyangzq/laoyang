@@ -2,7 +2,7 @@
   <div class="list">
     <Header></Header>
     <div>
-      <a href="">主页</a>&nbsp;&gt;<a href="">巧克力蛋糕</a>
+      <a href="javascript:;">主页</a>&nbsp;&gt;<a href="javascript:;">巧克力蛋糕</a>
     </div>
     <div>
       <img src="../../public/photo/List/Ltitle.jpg" alt="">
@@ -10,26 +10,26 @@
     <h1>您搜索的是&nbsp;"巧克力蛋糕"</h1>
     <div class="list_commodity">
       <div>
-        <a href="">综合排序</a>
+        <a href="javascript:;">综合排序</a>
         <span>价格
           <div>
-            <a href="">由高到低</a>
-            <a href="">由低到高</a>
+            <a href="javascript:;">由高到低</a>
+            <a href="javascript:;">由低到高</a>
           </div>  
         </span>        
         <span>共<em>{{getCount()}}</em>个商品</span>
       </div>
       <div class="list_content"  v-for="(item,i) of list" :key="i">
         <router-link :to="'/Detail?id='+item.id">
-          <img :src="'http://yuanzu.applinzi.com/'+item.pic">
+          <img :src="'http://127.0.0.1:4000/'+item.pic">
         </router-link>
         <div>
-          <h5><a href="">{{item.title}}</a></h5>
+          <h5><a href="javascript:;">{{item.title}}</a></h5>
           <p>{{item.stitle}}</p>
           <p>规格：{{item.spec}}</p>
         </div>
         <p>¥<em>{{item.price}}</em></p>
-        <a href="#" @click="shopping">立即购买</a>
+        <a href="javascript:;" @click="shopping">立即购买</a>
       </div>
       <div @click="loadMore" class="load">加载更多</div>
     </div>
@@ -55,13 +55,13 @@ export default {
   },
   methods:{
       loadMore(){
-          this.pno++;
-          var url = "list";
-          var obj = {pno:this.pno};
-          this.axios.get(url,{params:obj}).then(res=>{
-              var rows = this.list.concat(res.data.data);
-              this.list = rows;
-          })
+        this.pno++;
+        var url = "list";
+        var obj = {pno:this.pno};
+        this.axios.get(url,{params:obj}).then(res=>{
+            var rows = this.list.concat(res.data.data);
+            this.list = rows;
+        })
       },
       deta(){
         this.$router.push('/Detail?id='+item.id);
@@ -74,7 +74,6 @@ export default {
       var rows=this.list;
       // console.log(rows)
       for(var i=0;i<rows.length;i++){
-        // console.log(rows[i]);
         if(this.list[i]){
           count+=this.list[i].sum;
         }
